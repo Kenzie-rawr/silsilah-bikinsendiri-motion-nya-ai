@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trah Kartono - Silsilah Keluarga Besar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --dark-gradient: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            --gold-gradient: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: #2d3748;
+            --text-secondary: #718096;
+            --shadow-glow: 0 0 30px rgba(102, 126, 234, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0f0c29;
+            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+            min-height: 100vh;
+            color: var(--text-primary);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .bg-animation span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            animation: move 25s linear infinite;
+            bottom: -150px;
+        }
+
+        .bg-animation span:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+        .bg-animation span:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+        .bg-animation span:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+        .bg-animation span:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
+        .bg-animation span:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+        .bg-animation span:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
+        .bg-animation span:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
+        .bg-animation span:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
+        .bg-animation span:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
+        .bg-animation span:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
+
+        @keyframes move {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+        }
+
+        .main-title {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .main-title h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(247, 151, 30, 0.6);
+            margin-bottom: 0.5rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .main-title p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(247, 151, 30, 0.6); }
+            to { text-shadow: 0 0 30px rgba(247, 151, 30, 0.8), 0 0 40px rgba(255, 210, 0, 0.6); }
+        }
+
+        .btn-add-member {
+            background: var(--gold-gradient);
+            border: none;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(247, 151, 30, 0.4);
+        }
+
+        .btn-add-member:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(247, 151, 30, 0.6);
+            color: white;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Controls */
+        .controls-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .search-container {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem 0.75rem 3rem;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .search-input::placeholder { color: rgba(255, 255, 255, 0.6); }
+        .search-input:focus {
+            outline: none;
+            border-color: rgba(247, 151, 30, 0.5);
+            box-shadow: 0 0 20px rgba(247, 151, 30, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .filter-select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: rgba(247, 151, 30, 0.5);
+            box-shadow: 0 0 20px rgba(247, 151, 30, 0.3);
+        }
+
+        /* Stats Cards */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stats-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .stats-card:hover::before { opacity: 1; }
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(247, 151, 30, 0.3);
+        }
+
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Family Tree Container */
+        .family-tree-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            min-height: 600px;
+            position: relative;
+            overflow: auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .tree-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-width: 100%;
+            padding: 2rem;
+        }
+
+        /* Enhanced Tree Structure */
+        .tree-generation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 1rem;
+            position: relative;
+        }
+
+        .generation-label {
+            background: var(--gold-gradient);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(247, 151, 30, 0.3);
+        }
+
+        .tree-level {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .tree-level::before {
+            content: '';
+            position: absolute;
+            top: -2rem;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(247, 151, 30, 0.6), transparent);
+        }
+
+        /* Enhanced Member Cards */
+        .member-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(15px);
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(247, 151, 30, 0.4);
+            border-color: rgba(247, 151, 30, 0.6);
+        }
+
+        .member-photo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid transparent;
+            background: var(--gold-gradient);
+            padding: 3px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .member-card:hover .member-photo {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 30px rgba(247, 151, 30, 0.8);
+        }
+
+        .member-badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: var(--gold-gradient);
+            color: white;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .member-name {
+            font-weight: 600;
+            color: white;
+            margin: 0;
+            font-size: 1.2rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .member-details {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .member-relation {
+            background: rgba(247, 151, 30, 0.2);
+            color: #ffd200;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        /* Connection Lines */
+        .connection-line {
+            position: absolute;
+            background: linear-gradient(to bottom, rgba(247, 151, 30, 0.6), rgba(247, 151, 30, 0.2));
+            z-index: -1;
+        }
+
+        .vertical-line {
+            width: 2px;
+            height: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .horizontal-line {
+            height: 2px;
+            top: 25px;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .member-card:hover .action-buttons { opacity: 1; }
+
+        .action-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .edit-btn {
+            background: var(--success-gradient);
+            color: white;
+        }
+
+        .edit-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 0 15px rgba(79, 172, 254, 0.6);
+        }
+
+        .delete-btn {
+            background: var(--secondary-gradient);
+            color: white;
+        }
+
+        .delete-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 0 15px rgba(245, 87, 108, 0.6);
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            color: white;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--glass-border);
+            background: transparent;
+        }
+
+        .modal-title { font-weight: 600; }
+
+        .form-control, .form-select, .form-check-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            color: white;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control::placeholder, .form-select option { color: rgba(255, 255, 255, 0.6); }
+        .form-control:focus, .form-select:focus, .form-check-input:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(247, 151, 30, 0.5);
+            box-shadow: 0 0 20px rgba(247, 151, 30, 0.3);
+            color: white;
+        }
+
+        .form-check-input:checked {
+            background-color: #f7971e;
+            border-color: #f7971e;
+        }
+
+        .photo-upload-area {
+            border: 2px dashed var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .photo-upload-area:hover {
+            background: rgba(247, 151, 30, 0.1);
+            border-color: rgba(247, 151, 30, 0.5);
+            transform: scale(1.02);
+        }
+
+        .photo-preview {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 10px;
+            margin-top: 1rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .empty-state i {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .empty-state h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Welcome Banner */
+        .welcome-banner {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome-banner h3 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-banner p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title h1 { font-size: 2.5rem; }
+            .controls-container { flex-direction: column; }
+            .tree-level { flex-direction: column; align-items: center; }
+            .member-card { min-width: 180px; }
+            .member-photo { width: 100px; height: 100px; }
+            .stats-container { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #ffd200 0%, #f7971e 100%);
+        }
+
+        /* Zoom Controls */
+        .zoom-controls {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 1000;
+        }
+
+        .zoom-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gold-gradient);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(247, 151, 30, 0.4);
+        }
+
+        .zoom-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(247, 151, 30, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-sitemap me-2"></i>
+                Trah Kartono
+            </a>
+            <button class="btn btn-add-member" onclick="showAddMemberModal()">
+                <i class="fas fa-user-plus me-2"></i>Tambah Anggota
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Title -->
+    <div class="main-title">
+        <h1>Silsilah Keluarga Besar</h1>
+        <p>Pelestarian Warisan Keluarga untuk Generasi Mendatang</p>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container main-container">
+        <!-- Welcome Banner -->
+        <div class="welcome-banner" id="welcomeBanner" style="display: none;">
+            <h3><i class="fas fa-crown me-2"></i>Selamat Datang di Trah Kartono!</h3>
+            <p>Kelola dan lestarikan silsilah keluarga besar Anda dengan mudah dan modern</p>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-container">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" 
+                       placeholder="Cari anggota keluarga..." id="searchInput" onkeyup="searchMembers()">
+            </div>
+            <select class="filter-select" id="generationFilter" onchange="filterByGeneration()">
+                <option value="">Semua Generasi</option>
+            </select>
+            <select class="filter-select" id="relationFilter" onchange="filterByRelation()">
+                <option value="">Semua Hubungan</option>
+                <option value="root">Kepala Keluarga</option>
+                <option value="spouse">Pasangan</option>
+                <option value="child">Anak</option>
+                <option value="sibling">Saudara</option>
+                <option value="grandparent">Kakek/Nenek</option>
+            </select>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-container">
+            <div class="stats-card">
+                <div class="stats-number" id="totalMembers">0</div>
+                <div class="stats-label">Total Anggota</div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-number" id="totalGenerations">0</div>
+                <div class="stats-label">Generasi</div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-number" id="totalFamilies">0</div>
+                <div class="stats-label">Keluarga</div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-number" id="totalMales">0</div>
+                <div class="stats-label">Laki-laki</div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-number" id="totalFemales">0</div>
+                <div class="stats-label">Perempuan</div>
+            </div>
+        </div>
+
+        <!-- Family Tree -->
+        <div class="family-tree-container" id="familyTreeContainer">
+            <div class="empty-state" id="emptyState">
+                <i class="fas fa-users"></i>
+                <h4>Mulai Bangun Trah Kartono</h4>
+                <p>Tambahkan anggota keluarga pertama untuk memulai silsilah</p>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: var(--gold-gradient);"></div>
+                <span>Kepala Keluarga</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: var(--success-gradient);"></div>
+                <span>Pasangan</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: var(--primary-gradient);"></div>
+                <span>Anak</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Zoom Controls -->
+    <div class="zoom-controls">
+        <button class="zoom-btn" onclick="zoomIn()" title="Perbesar">
+            <i class="fas fa-plus"></i>
+        </button>
+        <button class="zoom-btn" onclick="zoomOut()" title="Perkecil">
+            <i class="fas fa-minus"></i>
+        </button>
+        <button class="zoom-btn" onclick="resetZoom()" title="Reset">
+            <i class="fas fa-compress"></i>
+        </button>
+    </div>
+
+    <!-- Add/Edit Member Modal -->
+    <div class="modal fade" id="memberModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">
+                        <i class="fas fa-user-plus me-2"></i>Tambah Anggota Keluarga
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="memberForm">
+                        <input type="hidden" id="memberId">
+                        <input type="hidden" id="memberPhoto">
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Foto</label>
+                                    <div class="photo-upload-area" onclick="document.getElementById('photoInput').click()">
+                                        <i class="fas fa-camera fa-2x mb-2"></i>
+                                        <p>Klik untuk upload foto</p>
+                                        <input type="file" id="photoInput" accept="image/*" style="display: none;" onchange="previewPhoto(event)">
+                                        <img id="photoPreview" class="photo-preview" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="memberName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Jenis Kelamin</label>
+                                    <select class="form-select" id="memberGender" required>
+                                        <option value="">Pilih jenis kelamin</option>
+                                        <option value="male">Laki-laki</option>
+                                        <option value="female">Perempuan</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Tanggal Lahir</label>
+                                    <input type="date" class="form-control" id="memberBirthdate">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Hubungan Keluarga</label>
+                                    <select class="form-select" id="memberRelation" onchange="handleRelationChange()">
+                                        <option value="">Pilih hubungan</option>
+                                        <option value="root">Kepala Keluarga</option>
+                                        <option value="spouse">Pasangan</option>
+                                        <option value="child">Anak</option>
+                                        <option value="sibling">Saudara</option>
+                                        <option value="grandparent">Kakek/Nenek</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3" id="parentSelectContainer" style="display: none;">
+                                    <label class="form-label">Pilih Orang Tua/Keluarga</label>
+                                    <select class="form-select" id="parentId">
+                                        <option value="">Pilih</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Status</label>
+                                    <select class="form-select" id="memberStatus">
+                                        <option value="alive">Masih Hidup</option>
+                                        <option value="deceased">Meninggal</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Pekerjaan</label>
+                                    <input type="text" class="form-control" id="memberOccupation">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Alamat</label>
+                            <textarea class="form-control" id="memberAddress" rows="2"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Keterangan (Opsional)</label>
+                            <textarea class="form-control" id="memberNotes" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-add-member" onclick="saveMember()">
+                        <i class="fas fa-save me-2"></i>Simpan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Member Detail Modal -->
+    <div class="modal fade" id="detailModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-user me-2"></i>Detail Anggota Keluarga
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="detailContent">
+                    <!-- Content will be populated dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Data storage
+        let familyMembers = JSON.parse(localStorage.getItem('familyMembers')) || [];
+        let currentEditId = null;
+        let isFirstVisit = !localStorage.getItem('hasVisited');
+        let currentZoom = 1;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add sample data if first visit and no data
+            if (isFirstVisit && familyMembers.length === 0) {
+                addSampleData();
+                localStorage.setItem('hasVisited', 'true');
+                document.getElementById('welcomeBanner').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('welcomeBanner').style.display = 'none';
+                }, 5000);
+            }
+            
+            renderFamilyTree();
+            updateStats();
+            updateFilters();
+        });
+
+        // Add comprehensive sample data
+        function addSampleData() {
+            const sampleData = [
+                {
+                    id: '1',
+                    name: 'Kartono',
+                    gender: 'male',
+                    birthdate: '1940-05-10',
+                    relation: 'root',
+                    parentId: null,
+                    status: 'deceased',
+                    occupation: 'Petani',
+                    address: 'Desa Sumberjo, Jawa Timur',
+                    notes: 'Pendiri Trah Kartono',
+                    photo: 'https://randomuser.me/api/portraits/men/1.jpg'
+                },
+                {
+                    id: '2',
+                    name: 'Siti Aminah',
+                    gender: 'female',
+                    birthdate: '1945-08-20',
+                    relation: 'spouse',
+                    parentId: '1',
+                    status: 'deceased',
+                    occupation: 'Ibu Rumah Tangga',
+                    address: 'Desa Sumberjo, Jawa Timur',
+                    notes: 'Istri dari Kartono',
+                    photo: 'https://randomuser.me/api/portraits/women/1.jpg'
+                },
+                {
+                    id: '3',
+                    name: 'Budi Santoso',
+                    gender: 'male',
+                    birthdate: '1970-03-15',
+                    relation: 'child',
+                    parentId: '1',
+                    status: 'alive',
+                    occupation: 'Wiraswasta',
+                    address: 'Kota Surabaya, Jawa Timur',
+                    notes: 'Anak pertama',
+                    photo: 'https://randomuser.me/api/portraits/men/2.jpg'
+                },
+                {
+                    id: '4',
+                    name: 'Dewi Lestari',
+                    gender: 'female',
+                    birthdate: '1972-07-22',
+                    relation: 'spouse',
+                    parentId: '3',
+                    status: 'alive',
+                    occupation: 'Guru',
+                    address: 'Kota Surabaya, Jawa Timur',
+                    notes: 'Istri Budi Santoso',
+                    photo: 'https://randomuser.me/api/portraits/women/2.jpg'
+                },
+                {
+                    id: '5',
+                    name: 'Kenzie',
+                    gender: 'male',
+                    birthdate: '1995-12-10',
+                    relation: 'child',
+                    parentId: '3',
+                    status: 'alive',
+                    occupation: 'Programmer',
+                    address: 'Jakarta Selatan',
+                    notes: 'Anak dari Budi Santoso',
+                    photo: 'https://randomuser.me/api/portraits/men/3.jpg'
+                },
+                {
+                    id: '6',
+                    name: 'Siti Nurhaliza',
+                    gender: 'female',
+                    birthdate: '1998-04-05',
+                    relation: 'child',
+                    parentId: '3',
+                    status: 'alive',
+                    occupation: 'Dokter',
+                    address: 'Kota Malang, Jawa Timur',
+                    notes: 'Anak kedua dari Budi Santoso',
+                    photo: 'https://randomuser.me/api/portraits/women/3.jpg'
+                },
+                {
+                    id: '7',
+                    name: 'Ahmad Fauzi',
+                    gender: 'male',
+                    birthdate: '1975-09-18',
+                    relation: 'child',
+                    parentId: '1',
+                    status: 'alive',
+                    occupation: 'PNS',
+                    address: 'Kota Madiun, Jawa Timur',
+                    notes: 'Anak kedua',
+                    photo: 'https://randomuser.me/api/portraits/men/4.jpg'
+                },
+                {
+                    id: '8',
+                    name: 'Ratna Sari',
+                    gender: 'female',
+                    birthdate: '1978-11-30',
+                    relation: 'spouse',
+                    parentId: '7',
+                    status: 'alive',
+                    occupation: 'Perawat',
+                    address: 'Kota Madiun, Jawa Timur',
+                    notes: 'Istri Ahmad Fauzi',
+                    photo: 'https://randomuser.me/api/portraits/women/4.jpg'
+                }
+            ];
+            
+            familyMembers = sampleData;
+            localStorage.setItem('familyMembers', JSON.stringify(familyMembers));
+        }
+
+        // Show add member modal
+        function showAddMemberModal() {
+            currentEditId = null;
+            document.getElementById('modalTitle').innerHTML = '<i class="fas fa-user-plus me-2"></i>Tambah Anggota Keluarga';
+            document.getElementById('memberForm').reset();
+            document.getElementById('photoPreview').style.display = 'none';
+            document.getElementById('parentSelectContainer').style.display = 'none';
+            updateParentOptions();
+            new bootstrap.Modal(document.getElementById('memberModal')).show();
+        }
+
+        // Show edit member modal
+        function showEditMemberModal(id) {
+            currentEditId = id;
+            const member = familyMembers.find(m => m.id === id);
+            if (!member) return;
+
+            document.getElementById('modalTitle').innerHTML = '<i class="fas fa-user-edit me-2"></i>Edit Anggota Keluarga';
+            document.getElementById('memberId').value = member.id;
+            document.getElementById('memberName').value = member.name;
+            document.getElementById('memberGender').value = member.gender;
+            document.getElementById('memberBirthdate').value = member.birthdate || '';
+            document.getElementById('memberRelation').value = member.relation;
+            document.getElementById('memberStatus').value = member.status || 'alive';
+            document.getElementById('memberOccupation').value = member.occupation || '';
+            document.getElementById('memberAddress').value = member.address || '';
+            document.getElementById('memberNotes').value = member.notes || '';
+            
+            if (member.photo) {
+                document.getElementById('photoPreview').src = member.photo;
+                document.getElementById('photoPreview').style.display = 'block';
+                document.getElementById('memberPhoto').value = member.photo;
+            }
+
+            handleRelationChange();
+            if (member.parentId) {
+                document.getElementById('parentId').value = member.parentId;
+            }
+
+            updateParentOptions();
+            new bootstrap.Modal(document.getElementById('memberModal')).show();
+        }
+
+        // Handle relation change
+        function handleRelationChange() {
+            const relation = document.getElementById('memberRelation').value;
+            const parentContainer = document.getElementById('parentSelectContainer');
+            const parentLabel = parentContainer.querySelector('label');
+            
+            if (relation === 'child' || relation === 'spouse' || relation === 'sibling') {
+                parentContainer.style.display = 'block';
+                if (relation === 'spouse') {
+                    parentLabel.textContent = 'Pilih Pasangan';
+                } else if (relation === 'sibling') {
+                    parentLabel.textContent = 'Pilih Saudara';
+                } else {
+                    parentLabel.textContent = 'Pilih Orang Tua';
+                }
+            } else {
+                parentContainer.style.display = 'none';
+            }
+        }
+
+        // Update parent options
+        function updateParentOptions() {
+            const parentSelect = document.getElementById('parentId');
+            parentSelect.innerHTML = '<option value="">Pilih</option>';
+            
+            const potentialParents = familyMembers.filter(m => 
+                m.relation === 'root' || m.relation === 'child'
+            );
+            
+            potentialParents.forEach(parent => {
+                const option = document.createElement('option');
+                option.value = parent.id;
+                option.textContent = `${parent.name} (${getRelationText(parent.relation)})`;
+                parentSelect.appendChild(option);
+            });
+        }
+
+        // Preview photo
+        function previewPhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('photoPreview').src = e.target.result;
+                    document.getElementById('photoPreview').style.display = 'block';
+                    document.getElementById('memberPhoto').value = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Save member
+        function saveMember() {
+            const name = document.getElementById('memberName').value;
+            const gender = document.getElementById('memberGender').value;
+            const birthdate = document.getElementById('memberBirthdate').value;
+            const relation = document.getElementById('memberRelation').value;
+            const parentId = document.getElementById('parentId').value;
+            const status = document.getElementById('memberStatus').value;
+            const occupation = document.getElementById('memberOccupation').value;
+            const address = document.getElementById('memberAddress').value;
+            const notes = document.getElementById('memberNotes').value;
+            const photo = document.getElementById('memberPhoto').value;
+
+            if (!name || !gender || !relation) {
+                alert('Harap isi semua field yang wajib diisi!');
+                return;
+            }
+
+            const memberData = {
+                id: currentEditId || Date.now().toString(),
+                name,
+                gender,
+                birthdate,
+                relation,
+                parentId: parentId || null,
+                status,
+                occupation,
+                address,
+                notes,
+                photo: photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=f7971e&color=fff&size=200`
+            };
+
+            if (currentEditId) {
+                const index = familyMembers.findIndex(m => m.id === currentEditId);
+                familyMembers[index] = memberData;
+            } else {
+                familyMembers.push(memberData);
+            }
+
+            localStorage.setItem('familyMembers', JSON.stringify(familyMembers));
+            renderFamilyTree();
+            updateStats();
+            updateFilters();
+            bootstrap.Modal.getInstance(document.getElementById('memberModal')).hide();
+        }
+
+        // Delete member
+        function deleteMember(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus anggota ini? (Termasuk semua keturunannya)')) {
+                // Also delete children and descendants
+                const toDelete = [id];
+                let foundDescendants = true;
+                
+                while (foundDescendants) {
+                    foundDescendants = false;
+                    familyMembers.forEach(member => {
+                        if (toDelete.includes(member.parentId) && !toDelete.includes(member.id)) {
+                            toDelete.push(member.id);
+                            foundDescendants = true;
+                        }
+                    });
+                }
+                
+                familyMembers = familyMembers.filter(m => !toDelete.includes(m.id));
+                localStorage.setItem('familyMembers', JSON.stringify(familyMembers));
+                renderFamilyTree();
+                updateStats();
+                updateFilters();
+            }
+        }
+
+        // Show member detail
+        function showMemberDetail(id) {
+            const member = familyMembers.find(m => m.id === id);
+            if (!member) return;
+
+            const age = member.birthdate ? 
+                new Date().getFullYear() - new Date(member.birthdate).getFullYear() : 
+                'Tidak diketahui';
+
+            const statusBadge = member.status === 'deceased' ? 
+                '<span class="badge bg-danger">Meninggal</span>' : 
+                '<span class="badge bg-success">Hidup</span>';
+
+            const detailContent = `
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img src="${member.photo}" alt="${member.name}" 
+                             class="rounded-circle mb-3" style="width: 200px; height: 200px; object-fit: cover; border: 4px solid; border-image: linear-gradient(45deg, #f7971e, #ffd200) 1;">
+                        <h4>${member.name}</h4>
+                        ${statusBadge}
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row mb-2">
+                            <div class="col-4"><strong>Jenis Kelamin:</strong></div>
+                            <div class="col-8">${member.gender === 'male' ? 'Laki-laki' : 'Perempuan'}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4"><strong>Umur:</strong></div>
+                            <div class="col-8">${age} tahun</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4"><strong>Hubungan:</strong></div>
+                            <div class="col-8">${getRelationText(member.relation)}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4"><strong>Pekerjaan:</strong></div>
+                            <div class="col-8">${member.occupation || '-'}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4"><strong>Alamat:</strong></div>
+                            <div class="col-8">${member.address || '-'}</div>
+                        </div>
+                        ${member.notes ? `
+                        <div class="row mb-2">
+                            <div class="col-4"><strong>Keterangan:</strong></div>
+                            <div class="col-8">${member.notes}</div>
+                        </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('detailContent').innerHTML = detailContent;
+            new bootstrap.Modal(document.getElementById('detailModal')).show();
+        }
+
+        // Get relation text
+        function getRelationText(relation) {
+            const relations = {
+                'root': 'Kepala Keluarga',
+                'spouse': 'Pasangan',
+                'child': 'Anak',
+                'sibling': 'Saudara',
+                'grandparent': 'Kakek/Nenek'
+            };
+            return relations[relation] || relation;
+        }
+
+        // Render family tree
+        function renderFamilyTree() {
+            const treeContainer = document.getElementById('familyTreeContainer');
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const generationFilter = document.getElementById('generationFilter').value;
+            const relationFilter = document.getElementById('relationFilter').value;
+
+            if (familyMembers.length === 0) {
+                treeContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-users"></i>
+                        <h4>Mulai Bangun Trah Kartono</h4>
+                        <p>Tambahkan anggota keluarga pertama untuk memulai silsilah</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Filter members
+            let filteredMembers = familyMembers.filter(member => {
+                const matchesSearch = member.name.toLowerCase().includes(searchTerm);
+                const matchesGeneration = !generationFilter || getGeneration(member.id) === parseInt(generationFilter);
+                const matchesRelation = !relationFilter || member.relation === relationFilter;
+                return matchesSearch && matchesGeneration && matchesRelation;
+            });
+
+            if (filteredMembers.length === 0) {
+                treeContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-search"></i>
+                        <h4>Tidak ditemukan</h4>
+                        <p>Tidak ada anggota keluarga yang sesuai dengan filter</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Group by generation
+            const generations = {};
+            filteredMembers.forEach(member => {
+                const gen = getGeneration(member.id);
+                if (!generations[gen]) {
+                    generations[gen] = [];
+                }
+                generations[gen].push(member);
+            });
+
+            // Build tree HTML
+            let treeHTML = '<div class="tree-wrapper">';
+            
+            Object.keys(generations).sort().forEach(gen => {
+                treeHTML += `
+                    <div class="tree-generation">
+                        <div class="generation-label">Generasi ${gen}</div>
+                        <div class="tree-level">
+                `;
+                
+                generations[gen].forEach(member => {
+                    treeHTML += createMemberCard(member);
+                });
+                
+                treeHTML += `
+                        </div>
+                    </div>
+                `;
+            });
+            
+            treeHTML += '</div>';
+            treeContainer.innerHTML = treeHTML;
+        }
+
+        // Get generation number
+        function getGeneration(memberId) {
+            let generation = 1;
+            let current = familyMembers.find(m => m.id === memberId);
+            
+            while (current && current.parentId) {
+                generation++;
+                current = familyMembers.find(m => m.id === current.parentId);
+            }
+            
+            return generation;
+        }
+
+        // Create member card
+        function createMemberCard(member) {
+            const age = member.birthdate ? 
+                new Date().getFullYear() - new Date(member.birthdate).getFullYear() : 
+                '?';
+            
+            const statusIcon = member.status === 'deceased' ? 
+                '<i class="fas fa-angel" style="color: #ffd700;"></i>' : 
+                '<i class="fas fa-heart" style="color: #ff6b6b;"></i>';
+
+            return `
+                <div class="member-card" onclick="showMemberDetail('${member.id}')">
+                    <div class="action-buttons">
+                        <button class="action-btn edit-btn" onclick="event.stopPropagation(); showEditMemberModal('${member.id}')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="action-btn delete-btn" onclick="event.stopPropagation(); deleteMember('${member.id}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="member-photo-container">
+                        <img src="${member.photo}" alt="${member.name}" class="member-photo">
+                        <div class="member-badge">${age}</div>
+                    </div>
+                    <p class="member-name">${member.name}</p>
+                    <div class="member-details">
+                        ${statusIcon} ${member.occupation || '-'}
+                    </div>
+                    <span class="member-relation">${getRelationText(member.relation)}</span>
+                </div>
+            `;
+        }
+
+        // Update statistics
+        function updateStats() {
+            document.getElementById('totalMembers').textContent = familyMembers.length;
+            
+            // Calculate generations
+            const generations = new Set();
+            familyMembers.forEach(member => {
+                generations.add(getGeneration(member.id));
+            });
+            document.getElementById('totalGenerations').textContent = generations.size || 1;
+            
+            // Calculate families (root members)
+            const families = familyMembers.filter(m => m.relation === 'root').length;
+            document.getElementById('totalFamilies').textContent = families;
+            
+            // Calculate gender distribution
+            const males = familyMembers.filter(m => m.gender === 'male').length;
+            const females = familyMembers.filter(m => m.gender === 'female').length;
+            document.getElementById('totalMales').textContent = males;
+            document.getElementById('totalFemales').textContent = females;
+        }
+
+        // Update filters
+        function updateFilters() {
+            const generationFilter = document.getElementById('generationFilter');
+            generationFilter.innerHTML = '<option value="">Semua Generasi</option>';
+            
+            const generations = new Set();
+            familyMembers.forEach(member => {
+                generations.add(getGeneration(member.id));
+            });
+            
+            Array.from(generations).sort().forEach(gen => {
+                const option = document.createElement('option');
+                option.value = gen;
+                option.textContent = `Generasi ${gen}`;
+                generationFilter.appendChild(option);
+            });
+        }
+
+        // Filter functions
+        function filterByGeneration() {
+            renderFamilyTree();
+        }
+
+        function filterByRelation() {
+            renderFamilyTree();
+        }
+
+        function searchMembers() {
+            renderFamilyTree();
+        }
+
+        // Zoom functions
+        function zoomIn() {
+            currentZoom = Math.min(currentZoom + 0.1, 2);
+            applyZoom();
+        }
+
+        function zoomOut() {
+            currentZoom = Math.max(currentZoom - 0.1, 0.5);
+            applyZoom();
+        }
+
+        function resetZoom() {
+            currentZoom = 1;
+            applyZoom();
+        }
+
+        function applyZoom() {
+            const treeContainer = document.getElementById('familyTreeContainer');
+            treeContainer.style.transform = `scale(${currentZoom})`;
+            treeContainer.style.transformOrigin = 'top center';
+        }
+    </script>
+</body>
+</html>
